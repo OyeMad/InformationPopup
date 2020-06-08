@@ -15,6 +15,9 @@ namespace Madhur.InfoPopup
 		[SerializeField]
 		SliderDataRunTimeSet    runtimeList= null;
 
+        [SerializeField]
+        Image m_panelImage;
+
 		[SerializeField]
 		TMP_Text    m_Text = null;
 
@@ -24,13 +27,26 @@ namespace Madhur.InfoPopup
 		[SerializeField]
 		bool        m_DrawIcon = true;
 
+        private Sprite  basePanel = null;
+        private Color baseColor = Color.white;
+
 		void Start ()
 		{
 			messageComplete = true;
 			runtimeList.Clear ( );
 			offset =  m_Text.rectTransform.offsetMin;
-		}
-		Vector2 offset = Vector2.zero;
+
+            Debug.Assert(runtimeList != null , "Please assign runtime set here" , gameObject);
+            Debug.Assert(m_panelImage != null, "Please assign base panel here", gameObject);
+
+            Debug.Assert(m_Text != null, "Please assign text component here", gameObject);
+
+            Debug.Assert(m_Sprite != null, "Please assign  infographic type image here", gameObject);
+
+            basePanel = m_panelImage.sprite;
+            baseColor = m_panelImage.color;
+        }
+        Vector2 offset = Vector2.zero;
 
 		public void ShowPopUp(string a_Message , PopUpType a_type ) 
 		{
@@ -49,42 +65,57 @@ namespace Madhur.InfoPopup
 				m_currentTime -= Time.deltaTime;
 
 				if( m_currentTime <= 0.0f)
-				{
-					m_currentTime = m_maxTimeForPopup;
+                {
+                    m_currentTime = m_maxTimeForPopup;
 
-					SliderData sd = runtimeList.Items[0];
-					m_Text.text = sd.Message;
+                    SetDataInPanel();
 
-					Vector2 t =  m_Text.rectTransform.offsetMin;
-					if ( m_DrawIcon )
-					{
-						m_Sprite.sprite = sd.PopUpSetting.Image;
-						m_Sprite.gameObject.SetActive ( true );
+                }
 
-						t = offset;
-						m_Text.rectTransform.offsetMin = t;
-					}
-					else
-					{
-						m_Sprite.gameObject.SetActive ( false );
-						t.x = 5;
-						m_Text.rectTransform.offsetMin = t;
-					}
 
-					// other customizations
-					m_Text.fontStyle = sd.PopUpSetting.Style;
-
-					SlideIn ( );
-					
-				}
-
-				
-			}
+            }
 
 
 		}
 
-		[SerializeField]
+        private void SetDataInPanel()
+        {
+            SliderData sd = runtimeList.Items[0];
+            m_Text.text = sd.Message;
+
+            if( sd.PopUpSetting.PanelBase )
+            m_panelImage.sprite = sd.PopUpSetting.PanelBase;
+            else
+            {
+                m_panelImage.sprite = basePanel;
+                m_panelImage.color = baseColor;
+            }
+
+            m_panelImage.color = sd.PopUpSetting.PanelColor;
+
+            Vector2 t = m_Text.rectTransform.offsetMin;
+            if (m_DrawIcon && sd.PopUpSetting.DrawImage)
+            {
+                m_Sprite.sprite = sd.PopUpSetting.Image;
+                m_Sprite.gameObject.SetActive(true);
+
+                t = offset;
+                m_Text.rectTransform.offsetMin = t;
+            }
+            else
+            {
+                m_Sprite.gameObject.SetActive(false);
+                t.x = 15;
+                m_Text.rectTransform.offsetMin = t;
+            }
+
+            // other customizations
+            m_Text.fontStyle = sd.PopUpSetting.Style;
+
+            SlideIn();
+        }
+
+        [SerializeField]
 		float   m_SlideInY		= 0f;
 
 		[SerializeField]

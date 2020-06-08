@@ -6,6 +6,8 @@ using UnityEngine;
 /// </summary>
 public class Demo : MonoBehaviour
 {
+    [SerializeField]
+    string Text;
     void Update()
     {
         if( Input.GetKeyUp( KeyCode.A ))
@@ -25,5 +27,10 @@ public class Demo : MonoBehaviour
 			// TO show Alert popup
 			InfoPopupUtil.ShowAlert( "Achievement Unlocked : Help Me!!!" );
 		}
+
+        if( Input.GetKeyUp(KeyCode.F))
+        {
+            InfoPopupUtil.ShowInformation(Text);
+        }
 	}
 }

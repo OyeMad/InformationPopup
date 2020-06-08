@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3a315058d4b2a42953d48d41fceed6, type: 3}
   m_Name: Popup-Type-warning
   m_EditorClassIdentifier: 
-  Type: {fileID: 11400000, guid: 553675f43e9e25649ac1e547d528c2d8, type: 2}
+  PanelBase: {fileID: 21300000, guid: cca1ca7271b2fda4bbe48d92932a080f, type: 3}
+  PanelColor: {r: 1, g: 1, b: 1, a: 1}
   Image: {fileID: 21300000, guid: 649be789a0c64d1448f76dcdcdee0d99, type: 3}
+  DrawImage: 1
   Style: 2

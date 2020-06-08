@@ -188,7 +188,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884e5cd2393c1e14d94539d3b65efcae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Text: God Mode Activated
 --- !u!1 &265005946
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +261,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.754717, g: 0.29291695, b: 0.24563903, a: 0}
+  m_BackGroundColor: {r: 0.5660378, g: 0.41918835, b: 0.41918835, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -385,21 +386,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 88982984}
     m_Modifications:
-    - target: {fileID: 5017313221268798023, guid: 19b7b2a830628cb4795ec1d77c81619c,
-        type: 3}
-      propertyPath: m_DrawIcon
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418670510066558308, guid: 19b7b2a830628cb4795ec1d77c81619c,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418670510066558308, guid: 19b7b2a830628cb4795ec1d77c81619c,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 513
-      objectReference: {fileID: 0}
     - target: {fileID: 5418670510830245290, guid: 19b7b2a830628cb4795ec1d77c81619c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -509,6 +495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Info Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418670510830245291, guid: 19b7b2a830628cb4795ec1d77c81619c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b7b2a830628cb4795ec1d77c81619c, type: 3}
